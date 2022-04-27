@@ -1,0 +1,6 @@
+discord
+datetime
+asyncio
+youtube_dl
+requests
+PyNaCl
