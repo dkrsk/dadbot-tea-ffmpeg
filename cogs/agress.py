@@ -11,22 +11,24 @@ class agress(commands.Cog):
     def __init__(self,client):
         self.client = client
 
-        with open('config.json', 'r', encoding='utf8') as f:
+        with open('/data/config.json', 'r', encoding='utf8') as f:
             self.config = json.load(f)
         self.settings = self.config['config']
         
-        with open('pasts.txt', encoding='utf-8') as f:
+        with open('/data/pasts.txt', encoding='utf-8') as f:
             self.pasts = f.readlines()
 
-    
+    @commands.Cog.listener()
+    async def on_guild_join(self, guild):
+        self.config['ServerSettings'].update({str(guild.id):{'aggressive':'on',
+                                                             'whiteChannel':None}})
 
 
     @commands.Cog.listener()
     async def on_message(self, message):
         #await self.client.process_commands(message)
-
         if self.config['ServerSettings'][str(message.guild.id)]['aggressive'] == 'off':
-            print(self.config['ServerSettings'][str(message.guild.id)]['aggressive'] == 'off')
+            #print(self.config['ServerSettings'][message.guild.id]['aggressive'] == 'off')
             return
 
         if message.author == self.client.user:
