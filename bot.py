@@ -24,6 +24,6 @@ for file in os.listdir('./cogs'):
         client.load_extension(f'cogs.{file[:-3]}')
 
 
-client.run(settings['token'])
+client.run(os.environ["DTOKEN"])
 
 """ TODO: !s !автооткл !pause """
