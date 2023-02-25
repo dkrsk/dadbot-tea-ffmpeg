@@ -8,7 +8,7 @@ class main(commands.Cog):
 
     def __init__(self,client):
         self.client = client
-        with open('/data/config.json', 'r', encoding='utf8') as f:
+        with open('./data/config.json', 'r', encoding='utf8') as f:
             self.config = json.load(f)
         self.settings = self.config['config']
 

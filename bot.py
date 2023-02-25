@@ -10,7 +10,7 @@ except OSError:
     print("WARN: Opus is broken ?")
 
 #чтение конфиг файла
-with open('/data/config.json', 'r', encoding='utf8') as f:
+with open('./data/config.json', 'r', encoding='utf8') as f:
     config = json.load(f)
 settings = config['config']
 

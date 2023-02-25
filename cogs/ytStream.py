@@ -14,7 +14,7 @@ class ytStream(commands.Cog):
     def __init__(self,client):
         self.client = client
 
-        with open('/data/config.json', 'r', encoding='utf8') as f:
+        with open('./data/config.json', 'r', encoding='utf8') as f:
             self.config = json.load(f)
 
     @commands.Cog.listener()
