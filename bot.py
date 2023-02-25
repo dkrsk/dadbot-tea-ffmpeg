@@ -4,7 +4,10 @@ from discord.ext import commands
 import json
 import os
 
-discord.opus.load_opus('/usr/lib/libopus.so.0')
+try:
+    discord.opus.load_opus('/usr/lib/libopus.so.0')
+except OSError:
+    print("WARN: Opus is broken ?")
 
 #чтение конфиг файла
 with open('/data/config.json', 'r', encoding='utf8') as f:
