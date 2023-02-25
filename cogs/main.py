@@ -8,7 +8,7 @@ class main(commands.Cog):
 
     def __init__(self,client):
         self.client = client
-        with open('./config.json', 'r', encoding='utf8') as f:
+        with open('/data/config.json', 'r', encoding='utf8') as f:
             self.config = json.load(f)
         self.settings = self.config['config']
 
@@ -40,8 +40,10 @@ class main(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        self.config['ServerSettings'][str(guild.id)].update({'aggressive':'on',
-                                                             'whiteChannel':None})
+        self.config['ServerSettings'].update({str(guild.id):{'aggressive':'on',
+                                                             'whiteChannel':None}})
+        #self.config['ServerSettings'][str(guild.id)].update({'aggressive':'on',
+        #                                                     'whiteChannel':None})
         with open('config.json', 'w', encoding='utf8') as f:
             json.dump(self.config, f, indent=4, ensure_ascii=False)
 

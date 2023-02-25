@@ -16,7 +16,7 @@ class embeds():
 
 
         if self._playlist.trackIsLooped:
-            loopStr = f'Track is {transformLoopToStr(not loopBool)}'
+            loopStr = f'Track is {transformLoopToStr(loopBool)}'
         else: loopStr = ''
 
         try: nextSong = self._playlist.queue[0]['title']

@@ -14,8 +14,13 @@ class ytStream(commands.Cog):
     def __init__(self,client):
         self.client = client
 
-        with open('./config.json', 'r', encoding='utf8') as f:
+        with open('/data/config.json', 'r', encoding='utf8') as f:
             self.config = json.load(f)
+
+    @commands.Cog.listener()
+    async def on_guild_join(self, guild):
+        self.config['ServerSettings'].update({str(guild.id):{'aggressive':'on',
+                                                             'whiteChannel':None}})
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -164,7 +169,6 @@ class ytStream(commands.Cog):
 
         vc = member.guild.voice_client
         if vc == None: return
-        print(vc)
 
         if after.channel == None and before.channel == vc.channel:
             await asyncio.sleep(20)
