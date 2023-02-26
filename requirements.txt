@@ -1,6 +1,6 @@
 discord.py==1.7.3
 datetime
 asyncio
-youtube_dl
+yt-dlp
 requests
 PyNaCl
